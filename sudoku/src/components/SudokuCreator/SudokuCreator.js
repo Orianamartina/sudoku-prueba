@@ -19,28 +19,39 @@ var sudokuGrid = [
    61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72,
    73, 74, 75, 76, 77, 78, 79, 80, 81
  ]
-const getColumnIndexes = (columnNumber) => {
-    let rowIndexes = []
+const getColumnIndexes = (box) => {
+    let columns = []
     for (let index = 0; index < 9; index++) {
-        rowIndexes.push(columnNumber -1 + index * 9)
-        
+        let columnArray = []
+        for (let i = 0; i < 9; i++) {
+            columnArray.push(9 * i + index)
+            
+        }
+        columns.push(columnArray)
     }
-    return rowIndexes
-}
-
-
-const getRowIndexes = (rowNumber) => {
-    let columIndexes = []
-
-    for (let index = 0; index < 9; index++) {
-    let element = 9 * (rowNumber - 1) + index
-    columIndexes.push(element)
-
+    for (let j = 0; j < columns.length; j++) {
+        if (columns[j].includes(box)) return columns[j]
     }
     
-    return columIndexes
+
 }
-const getSquare = (box) => {
+const getRowIndexes = (box) => {
+    let rows = []
+    for (let index = 0; index < 9; index++ ) {
+        let rowArray = []
+        for (let i = 0; i < 9; i++) {
+            rowArray.push(index * 9 + i)
+            
+        }
+        rows.push(rowArray)
+    }
+    for (let j = 0; j < rows.length; j++) {
+        if (rows[j].includes(box)) return rows[j]
+    }
+}
+
+
+const getSquareIndex = (box) => {
     let squares = 
     [ 
     [1, 2, 3, 10, 11, 12, 19, 20, 21],
@@ -78,11 +89,10 @@ const fillSquare = (square) => {
         sudokuGrid[position -1] = numbersArray[index]
         
     }
-    
 }
 
-const getRow = (row) => {
-    let rowIndexes = getRowIndexes(row)
+const getRow = (box) => {
+    let rowIndexes = getRowIndexes(box)
     let rowResult = []
     for (let index = 0; index < rowIndexes.length; index++) {
         element = sudokuGrid[rowIndexes[index]]
@@ -100,24 +110,42 @@ const getColumn = (column) => {
     }
     return columResult
 }
-
-const setFirstRow= () => {
-    let rowIndexes = getRowIndexes(1).slice(3, 10)
-
-    return rowIndexes
-
+const getSquare = (index) => {
+  let squareIndexes = getSquareIndex(index +1)
+  let squareArray = []
+  for (let i = 0; i < squareIndexes.length; i++) {
+    squareArray.push(sudokuGrid[squareIndexes[i] -1])
+    
+  }
+  return squareArray
 }
-console.log(setFirstRow())
 
+
+
+const validateBox = (index) => {
+    let randomNumbers = shuffleArray()
+    let column = getColumn(index)
+    let row = getRow(index)
+    let square = getSquare(index)
+    let possible = []
+    for (let i = 0; i < randomNumbers.length; i++) {
+        const element = randomNumbers[i];
+        if (!row.includes(element) && !column.includes(element) && !square.includes(element)){
+            possible.push(element)
+        }
+        
+    }
+    return possible
+}
 
 const setGrid = () => {
-    fillSquare(getSquare(1))
-    fillSquare(getSquare(31))
-    fillSquare(getSquare(81))
-   console.log(getColumn(3))
-   console.log(getColumn(2))
-   console.log(getColumn(1))
-   
+    fillSquare(getSquareIndex(1))
+    fillSquare(getSquareIndex(31))
+    fillSquare(getSquareIndex(81))
+    console.log(getSquare(3))
+    console.log(getColumn(3))
+    console.log(getRow(3))
+    console.log(validateBox(3))
     return sudokuGrid
 
 }
