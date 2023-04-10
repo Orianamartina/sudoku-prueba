@@ -97,10 +97,6 @@ function solve(board) {
     }
 }
 
-// ______TESTS______ //
-// console.log(solve(bd4))
-// ______TESTS______ //
-
 
 function searchForSolution(boards){
     // List[Board] -> Board or false
@@ -136,9 +132,6 @@ function solved(board){
     return true
 }
 
-// ______TESTS______ //
-// console.log(solved(bd3))
-// ______TESTS______ //
 
 
 function nextBoards(board){ 
