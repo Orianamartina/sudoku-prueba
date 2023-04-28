@@ -1,16 +1,29 @@
+const b = null
 
-// Square name
+const board1 = [
+    [b, b, b, b, b, b, b, b, b],
+    [b, b, b, b, b, b, b, b, b],
+    [b, b, b, b, b, b, b, b, b],
+    [b, b, b, b, b, b, b, b, b],
+    [b, b, b, b, b, b, b, b, b],
+    [b, b, b, b, b, b, b, b, b],
+    [b, b, b, b, b, b, b, b, b],
+    [b, b, b, b, b, b, b, b, b],
+    [b, b, b, b, b, b, b, b, b],
+]
 
-var sudokuGrid = [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0
-  ]]
 
+const board2 = [
+    [b, b, b, b, b, b, b, b, b],
+    [b, b, b, b, b, b, b, b, b],
+    [b, b, b, b, b, b, b, b, b],
+    [b, b, b, b, b, b, b, b, b],
+    [b, b, b, b, b, b, b, b, b],
+    [b, b, b, b, b, b, b, b, b],
+    [b, b, b, b, b, b, b, b, b],
+    [b, b, b, b, b, b, b, b, b],
+    [b, b, b, b, b, b, b, b, b],
+]
 
 const shuffleArray =() => {
     let array = [1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -23,149 +36,234 @@ const shuffleArray =() => {
     return array 
 }
 
-const getColumnIndexes = (box) => {
-    let columns = []
-    for (let index = 0; index < 9; index++) {
-        let columnArray = []
-        for (let i = 0; i < 9; i++) {
-            columnArray.push(9 * i + index)
-            
+
+const setBox1 = () => {
+    const numbers = shuffleArray()
+    for (let i = 0; i < 3; i++) {    
+        board2[0][i] = numbers[i]
+    }
+    for (let i = 0; i < 3; i++) {    
+        board2[1][i] = numbers[i + 3]
+    }
+    for (let i = 0; i < 3; i++) {    
+        board2[2][i] = numbers[i + 6]
+    }
+ 
+}
+const setBox2 = () => {
+    const numbers = shuffleArray()
+    for (let i = 0; i < 3; i++) {    
+        board2[3][i+3] = numbers[i]
+    }
+    for (let i = 0; i < 3; i++) {    
+        board2[4][i+3] = numbers[i + 3]
+    }
+    for (let i = 0; i < 3; i++) {    
+        board2[5][i+3] = numbers[i + 6]
+    }
+ 
+}
+const setBox3 = () => {
+    const numbers = shuffleArray()
+    for (let i = 0; i < 3; i++) {    
+        board2[6][i+6] = numbers[i]
+    }
+    for (let i = 0; i < 3; i++) {    
+        board2[7][i+6] = numbers[i + 3]
+    }
+    for (let i = 0; i < 3; i++) {    
+        board2[8][i+6] = numbers[i + 6]
+    }
+ 
+}
+const setBoxes = () => {
+    setBox1();
+    setBox2();
+    setBox3()
+}
+
+function solve(board) {
+    // THIS FUNCTION WORKS.
+    // Board -> Board
+    // solves the given sudoku board
+    // ASSUME the given sudoku board is valid
+    if (solved(board)) {
+        return board
+    }
+    else {
+        const possibilities = nextBoards(board)
+        const validBoards = keepOnlyValid(possibilities)
+        return searchForSolution(validBoards)
+    }
+}
+
+
+function searchForSolution(boards){
+    // List[Board] -> Board or false
+    // finds a valid solution to the sudoku problem
+    if (boards.length < 1){
+        return false
+    }
+    else {
+        // backtracking search for solution
+        var first = boards.shift()
+        const tryPath = solve(first)
+        if (tryPath != false){
+            return tryPath
         }
-        columns.push(columnArray)
-    }
-    for (let j = 0; j < columns.length; j++) {
-        if (columns[j].includes(box)) return columns[j]
-    }
-    
-
-}
-const getRowIndexes = (box) => {
-    let rows = []
-    for (let index = 0; index < 9; index++ ) {
-        let rowArray = []
-        for (let i = 0; i < 9; i++) {
-            rowArray.push(index * 9 + i)
-            
+        else{
+            return searchForSolution(boards)
         }
-        rows.push(rowArray)
-    }
-    for (let j = 0; j < rows.length; j++) {
-        if (rows[j].includes(box)) return rows[j]
     }
 }
 
 
-const getSquareIndex = (box) => {
-    let squares = 
-    [ 
-    [1, 2, 3, 10, 11, 12, 19, 20, 21],
-    [4, 5, 6, 13, 14, 15, 22, 23, 24],
-    [7, 8, 9, 16, 17, 18, 25, 26, 27],
-    [28, 29, 30, 37, 38, 39, 46, 47, 48],
-    [31,32,33, 40, 41, 42, 49, 50, 51 ],
-    [34, 35, 36, 43, 44, 45, 52, 53, 54],
-    [55, 56, 57, 64, 65, 66, 73, 74, 75],
-    [58, 59, 60, 67, 68, 69, 76, 77, 78],
-    [61, 62, 63, 70, 71, 72, 79, 80, 81]]
-    for (let index = 0; index < squares.length; index++) {
-        if (squares[index].includes(box)) return squares[index]
-        
-    }
-}
-
-
-
-
-const fillInitialSquare = (square) => {
-    let numbersArray = shuffleArray()
-    for (let index = 0; index < square.length; index++) {
-        let position = square[index]
-    
-        sudokuGrid[position -1] = numbersArray[index]
-        
-    }
-}
-
-const getRow = (box) => {
-    let rowIndexes = getRowIndexes(box)
-    let rowResult = []
-    for (let index = 0; index < rowIndexes.length; index++) {
-        element = sudokuGrid[rowIndexes[index]]
-        rowResult.push(element)        
-    }
-    return rowResult
-}
-const getColumn = (column) => {
-    let columIndexes = getColumnIndexes(column)
-    let columResult = []
-    for (let index = 0; index < columIndexes.length; index++) {
-        element = sudokuGrid[columIndexes[index]]
-        columResult.push(element)
-        
-    }
-    return columResult
-}
-const getSquare = (index) => {
-  let squareIndexes = getSquareIndex(index +1)
-  let squareArray = []
-  for (let i = 0; i < squareIndexes.length; i++) {
-    squareArray.push(sudokuGrid[squareIndexes[i] -1])
-    
-  }
-  return squareArray
-}
-
-
-
-const validateBox = (index) => {
-    let randomNumbers = shuffleArray()
-    let column = getColumn(index)
-    let row = getRow(index)
-    let square = getSquare(index)
-    let possible = []
-    for (let i = 0; i < randomNumbers.length; i++) {
-        const element = randomNumbers[i];
-        if (!row.includes(element) && !column.includes(element) && !square.includes(element)){
-            possible.push(element)
+function solved(board){
+    // THIS FUNCTION WORKS.
+    // Board -> Boolean
+    // checks to see if the given puzzle is solved
+    for (var i = 0; i < 9; i++){
+        for (var j = 0; j < 9; j++){
+            if (board[i][j] == null){
+                return false
+            }
         }
-        
     }
-    return possible
-}
-const validateFirstRow = (index, i1, i2, i3, i4, i5) => {
-    if(validateBox(index+1)){
-        sudokuGrid[index+1] = validateBox(index+1)[i1]
-
-    }
-    else{
-
-
-
-    }
+    return true
 }
 
 
-const setGrid = () => {
-    fillInitialSquare(getSquareIndex(1))
-    fillInitialSquare(getSquareIndex(31))
-    fillInitialSquare(getSquareIndex(81))
-    console.log(validateBox(3))
-    console.log(validateBox(4))
-    console.log(validateBox(5))
-    console.log(validateBox(6))
-    console.log(validateBox(7))
-    console.log(validateBox(8))
-    
-    validateFirst3Rows(3)
-    validateFirst3Rows(12)
-    return sudokuGrid
 
+function nextBoards(board){ 
+    // THIS FUNCTION WORKS.
+    // Board -> List[Board]
+    // finds the first emply square and generates 9 different boards filling in that square with numbers 1...9
+    var res = []
+    const firstEmpty = findEmptySquare(board)
+    if (firstEmpty != undefined){
+        const y = firstEmpty[0]
+        const x = firstEmpty[1]
+        for (var i = 1; i <= 9; i++){
+            var newBoard = [...board]
+            var row = [...newBoard[y]]
+            row[x] = i
+            newBoard[y] = row
+            res.push(newBoard)
+        }
+    }
+    return res
 }
-console.log(setGrid())
+
+function findEmptySquare(board){
+    // THIS FUNCTION WORKS.
+    // Board -> [Int, Int] 
+    // (get the i j coordinates for the first empty square)
+    for (var i = 0; i < 9; i++){
+        for (var j = 0; j < 9; j++){
+            if (board[i][j] == null) {
+                return [i, j]
+            }
+        }
+    }
+}
+
+// ______TESTS______ //
+// console.log(nextBoards(bd3))
+// console.log(findEmptySquare(bd3))
+// ______TESTS______ //
+
+function keepOnlyValid(boards){
+    // THIS FUNCTION WORKS.
+    // List[Board] -> List[Board]
+    // filters out all of the invalid boards from the list
+    var res = []
+    for (var i = 0; i < boards.length; i++){
+        if (validBoard(boards[i])){
+            res.push(boards[i])
+        }
+    }
+    return res
+}
+
+// ______TESTS______ //
+// console.log(keepOnlyValid([bd1, bd2, bd3]))
+// ______TESTS______ //
 
 
+function validBoard(board){
+    // THIS FUNCTION WORKS.
+    // Board -> Boolean
+    // checks to see if given board is valid
+    return rowsGood(board) && columnsGood(board) && boxesGood(board)
+}
+
+function rowsGood(board){
+    // THIS FUNCTION WORKS.
+    // Board -> Boolean
+    // makes sure there are no repeating numbers for each row
+    for (var i = 0; i < 9; i++){
+        var cur = []
+        for (var j = 0; j < 9; j++){
+            if (cur.includes(board[i][j])){
+                return false
+            }
+            else if (board[i][j] != null){
+                cur.push(board[i][j])
+            }
+        }
+    }
+    return true
+}
+
+function columnsGood(board){
+    // THIS FUNCTION WORKS.
+    // Board -> Boolean
+    // makes sure there are no repeating numbers for each column
+    for (var i = 0; i < 9; i++){
+        var cur = []
+        for (var j = 0; j < 9; j++){
+            if (cur.includes(board[j][i])){
+                return false
+            }
+            else if (board[j][i] != null){
+                cur.push(board[j][i])
+            }
+        }
+    }
+    return true
+}
 
 
+function boxesGood(board){
+    // transform this everywhere to update res
+    const boxCoordinates = [[0, 0], [0, 1], [0, 2],
+                            [1, 0], [1, 1], [1, 2],
+                            [2, 0], [2, 1], [2, 2]]
+    // THIS FUNCTION WORKS.
+    // Board -> Boolean
+    // makes sure there are no repeating numbers for each box
+    for (var y = 0; y < 9; y += 3){
+        for (var x = 0; x < 9; x += 3){
+            // each traversal should examine each box
+            var cur = []
+            for (var i = 0; i < 9; i++){
+                var coordinates = [...boxCoordinates[i]]
+                coordinates[0] += y
+                coordinates[1] += x
+                if (cur.includes(board[coordinates[0]][coordinates[1]])){
+                    return false
+                }
+                else if (board[coordinates[0]][coordinates[1]] != null){
+                    cur.push(board[coordinates[0]][coordinates[1]])
+                }
+            }
+        }
+    }
+    return true
+}
 
-
-
+const createSudoku = function(){
+    setBoxes()
+    return solve(board2)
+}
+module.exports = createSudoku
