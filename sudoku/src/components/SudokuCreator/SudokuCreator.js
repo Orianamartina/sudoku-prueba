@@ -1,6 +1,6 @@
 const b = null
 
-const board1 = [
+let board1 = [
     [b, b, b, b, b, b, b, b, b],
     [b, b, b, b, b, b, b, b, b],
     [b, b, b, b, b, b, b, b, b],
@@ -108,7 +108,7 @@ function searchForSolution(boards){
         // backtracking search for solution
         var first = boards.shift()
         const tryPath = solve(first)
-        if (tryPath != false){
+        if (tryPath !== false){
             return tryPath
         }
         else{
@@ -140,7 +140,7 @@ function nextBoards(board){
     // finds the first emply square and generates 9 different boards filling in that square with numbers 1...9
     var res = []
     const firstEmpty = findEmptySquare(board)
-    if (firstEmpty != undefined){
+    if (firstEmpty !== undefined){
         const y = firstEmpty[0]
         const x = firstEmpty[1]
         for (var i = 1; i <= 9; i++){
@@ -266,4 +266,78 @@ const createSudoku = function(){
     setBoxes()
     return solve(board2)
 }
-module.exports = createSudoku
+var random = []
+const getRandomNumbers = function(amount){
+    if (amount === 0) {
+        return random;
+      }
+      
+    let number = Math.floor(Math.random() * 81);
+    
+    if (!random.includes(number)) {
+    random.push(number);
+    amount = amount - 1;
+    }
+    
+    return getRandomNumbers(amount, random);
+    
+    
+}
+
+const setEmptySpaces = () =>{
+    for (let i = 0; i < random.length; i++) {
+        const element = random[i];
+        if (element < 9){
+            board1[0][element] = "0"
+        }
+
+        if (element >= 9 && element < 18){
+            board1[1][element - 9] = "0"
+        }
+        if (element >= 18 && element < 27 ){
+            board1[2][element - 18] = "0"
+        }
+        if (element >= 27 && element < 36 ){
+            board1[3][element - 27] = "0"
+        }
+        if (element >= 36 && element < 45 ){
+            board1[4][element - 36] = "0"
+        }
+        if (element >= 45 && element < 54 ){
+            board1[5][element - 45] = "0"
+        }
+        if (element >= 54 && element < 63 ){
+            board1[6][element - 54] = "0"
+        }
+        if (element >= 63 && element < 72 ){
+            board1[7][element - 63] = "0"
+        }
+        if (element >= 72 && element < 81 ){
+            board1[8][element - 72] = "0"
+        }
+
+    }
+}
+const setSudokuForSolving =  function(level){
+    setBoxes()
+    const solvedBoard = solve(board2)
+    board1 = solve(board2)
+    if (level === 1){
+        random = []
+        getRandomNumbers(45)
+        setEmptySpaces()
+        
+    }
+    if (level === 2){
+        random = []
+        getRandomNumbers(36)
+        setEmptySpaces()
+    }
+    return board1
+    
+}
+
+const sudokuGrid = setSudokuForSolving(1)
+
+
+module.exports = {setSudokuForSolving, sudokuGrid}
