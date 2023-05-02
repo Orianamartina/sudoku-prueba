@@ -347,10 +347,9 @@ const setSudokuForSolving =  function(level){
     
 }
 
-const sudokuGridEasy = setSudokuForSolving(1)
-const sudokuGridMedium = setSudokuForSolving(2)
-const sudokuGridHard = setSudokuForSolving(3)
-const sudokuGridExpert = setSudokuForSolving(4)
+export const sudokuGridEasy = setSudokuForSolving(1)
+export const sudokuGridMedium = setSudokuForSolving(2)
+export const sudokuGridHard = setSudokuForSolving(3)
+export const sudokuGridExpert = setSudokuForSolving(4)
 
 
-module.exports = {sudokuGridEasy, sudokuGridMedium, sudokuGridHard, sudokuGridExpert}
