@@ -1,0 +1,13 @@
+.sudokuContainer{
+    max-width: 80%;
+}
+.row{
+
+}
+
+.input{
+    width: 3vw;
+    height: 3vw;
+    font-size: 2vw;
+    text-align: center;
+}

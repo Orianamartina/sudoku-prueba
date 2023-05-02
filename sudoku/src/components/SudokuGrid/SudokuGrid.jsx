@@ -1,36 +1,69 @@
-import {getSudoku} from  "../../redux/actions";
+import {getSudokuEasy, getSudokuHard, getSudokuMedium, getSudokuExpert} from  "../../redux/actions";
 import { setSudokuForSolving, createSudoku, sudokuGrid } from "../SudokuCreator/SudokuCreator"
 import { useEffect, useState, useMemo, useCallback } from "react"
 import {useDispatch, useSelector} from "react-redux";
+import style from "./sudokuGrid.module.css"
+import PlaySudoku from "../PlaySudoku/PlaySudoku";
+
 export default  function(){
-    
+
     //const [sudoku, setSudoku] = useState()
     const random = []
     const dispatch = useDispatch()
     const sudoku = useSelector((state) => state.sudokuGrid)
-    console.log(sudoku)
-
-    const row1 = sudoku[0]
-    const row2 = sudoku[1]
-    const row3 = sudoku[2]
-    const row4 = sudoku[3]
-    const row5 = sudoku[4]
-    const row6 = sudoku[5]
-    const row7 = sudoku[6]
-    const row8 = sudoku[7]
-    const row9 = sudoku[8]
+    const solvedSudoku = useSelector((state) => state.solvedSudokuGrid)
     
     
-    
-    
+   
+    //console.log(sudoku)
     useEffect(() => {
-       dispatch(getSudoku())
+        
     },[])
     
+    const [level, setLevel] = useState(null)
+    const [flag, setFlag] = useState(null)
+
+    function handleLevelEasy(){
+        dispatch(getSudokuEasy())
+        setLevel("easy")
+        setFlag(1)
+    }
+    function handleLevelMedium(){
+        dispatch(getSudokuMedium())
+        setLevel("medium")
+        setFlag(2)
+    }
+    function handleLevelHard(){
+        dispatch(getSudokuHard())
+        setLevel("hard")
+        setFlag(3)
+    }
+    function handleLevelExpert(){
+        dispatch(getSudokuExpert())
+        setLevel("expert")
+        setFlag(4)
+    }
+    
     return (
-        <>
-            <h1>Here goes the grid</h1>
+        <div className={style.sudokuContainer}>
+            {
+                level? <button onClick={() => setLevel(null)}>Back</button>:
+                <div> 
+                    <h1>select a level</h1>
+                    <button onClick={handleLevelEasy}>Easy</button>
+                    <button onClick={handleLevelMedium}>Medium</button>
+                    <button onClick={handleLevelHard}>Hard</button>
+                    <button onClick={handleLevelExpert}>Expert</button>
+                </div>
+                
+            }
             
-        </>
+            <h1>{level}</h1>
+            {level?
+                <PlaySudoku solved = {solvedSudoku} sudokuGrid = {sudoku} level = {level} />:
+                 <h1></h1>
+            }
+            
+        </div>
     )
 }

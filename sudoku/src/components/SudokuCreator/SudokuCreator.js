@@ -288,32 +288,32 @@ const setEmptySpaces = () =>{
     for (let i = 0; i < random.length; i++) {
         const element = random[i];
         if (element < 9){
-            board1[0][element] = "0"
+            board1[0][element] = " "
         }
 
         if (element >= 9 && element < 18){
-            board1[1][element - 9] = "0"
+            board1[1][element - 9] = " "
         }
         if (element >= 18 && element < 27 ){
-            board1[2][element - 18] = "0"
+            board1[2][element - 18] = " "
         }
         if (element >= 27 && element < 36 ){
-            board1[3][element - 27] = "0"
+            board1[3][element - 27] = " "
         }
         if (element >= 36 && element < 45 ){
-            board1[4][element - 36] = "0"
+            board1[4][element - 36] = " "
         }
         if (element >= 45 && element < 54 ){
-            board1[5][element - 45] = "0"
+            board1[5][element - 45] = " "
         }
         if (element >= 54 && element < 63 ){
-            board1[6][element - 54] = "0"
+            board1[6][element - 54] = " "
         }
         if (element >= 63 && element < 72 ){
-            board1[7][element - 63] = "0"
+            board1[7][element - 63] = " "
         }
         if (element >= 72 && element < 81 ){
-            board1[8][element - 72] = "0"
+            board1[8][element - 72] = " "
         }
 
     }
@@ -324,20 +324,33 @@ const setSudokuForSolving =  function(level){
     board1 = solve(board2)
     if (level === 1){
         random = []
-        getRandomNumbers(45)
+        getRandomNumbers(36)
         setEmptySpaces()
         
     }
     if (level === 2){
         random = []
-        getRandomNumbers(36)
+        getRandomNumbers(45)
         setEmptySpaces()
     }
-    return board1
+    if (level === 3){
+        random = []
+        getRandomNumbers(51)
+        setEmptySpaces()
+    }
+    if (level === 4){
+        random = []
+        getRandomNumbers(56)
+        setEmptySpaces()
+    }
+    return {board: board1, solvedBoard: solvedBoard}
     
 }
 
-const sudokuGrid = setSudokuForSolving(1)
+const sudokuGridEasy = setSudokuForSolving(1)
+const sudokuGridMedium = setSudokuForSolving(2)
+const sudokuGridHard = setSudokuForSolving(3)
+const sudokuGridExpert = setSudokuForSolving(4)
 
 
-module.exports = {setSudokuForSolving, sudokuGrid}
+module.exports = {sudokuGridEasy, sudokuGridMedium, sudokuGridHard, sudokuGridExpert}
