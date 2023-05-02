@@ -1,5 +1,4 @@
 import {getSudokuEasy, getSudokuHard, getSudokuMedium, getSudokuExpert} from  "../../redux/actions";
-import { setSudokuForSolving, createSudoku, sudokuGrid } from "../SudokuCreator/SudokuCreator"
 import { useEffect, useState, useMemo, useCallback } from "react"
 import {useDispatch, useSelector} from "react-redux";
 import style from "./sudokuGrid.module.css"

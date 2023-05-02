@@ -1,5 +1,5 @@
 import { GET_SUDOKU_EASY, GET_SUDOKU_MEDIUM, GET_SUDOKU_HARD, GET_SUDOKU_EXPERT } from "../actionTypes";
-import { sudokuGridEasy, sudokuGridMedium,sudokuGridHard, sudokuGridExpert } from "../../components/SudokuCreator/SudokuCreator";
+import { sudokuGridEasy, sudokuGridMedium,sudokuGridHard, sudokuGridExpert } from "../components/SudokuCreator/SudokuCreator";
 
 export const getSudokuEasy = () => {
     return  function(dispatch){
