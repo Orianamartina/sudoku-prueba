@@ -1,5 +1,5 @@
 import { useState } from "react"
-
+import style from "../SudokuGrid/sudokuGrid.module.css"
 
 
 export default function(sudokuGrid, solved){
@@ -22,6 +22,7 @@ export default function(sudokuGrid, solved){
                 <div key={rowIndex}>
                     {row.map((cell, colIndex) => (
                         <input
+                        className={style.input}
                         key={`${rowIndex}-${colIndex}`}
                         type="number"
                         value={cell || ''}
