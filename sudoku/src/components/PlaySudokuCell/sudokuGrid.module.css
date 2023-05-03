@@ -9,3 +9,6 @@
     font-size: 2vw;
     margin: 0
 }
+.selected{
+    background-color: red;
+}

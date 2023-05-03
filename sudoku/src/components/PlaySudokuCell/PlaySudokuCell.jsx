@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react"
+import { useState, useCallback } from "react"
 import style from "./sudokuGrid.module.css"
 import UnderButtons from "../UnderButtons/UnderButtons";
 import SudokuCompleted from "../SudokuCompleted/SudokuCompleted";
@@ -7,29 +7,21 @@ export default function(props){
     const [startingGrid, setStartingGrid] = useState(JSON.parse(JSON.stringify(props.sudokuGrid)));
     const [grid, setGrid] = useState(props.sudokuGrid)
     const [solvedGrid, setSolvedGrid] = useState(props.solved)
-    const inputs = useRef([]);
+    const [selectedCell, setSelectedCell] = useState({row: null, col:null})
     const [finished, setFinished] = useState()
-    const [currentNumber, setCurrentNumber] = useState(null)
-    
-
-    useEffect(() => {
-        // Focus on the first input when the component mounts
-        inputs.current[0].focus();
-      }, []);
+    const [currentNumber, setCurrentNumber] = useState(0)
    
-    function handleChange(event, row, col) {
-        const { value } = event.target;
-        const newGrid = [...grid];
-        newGrid[row][col] = value ? value : 0;
-        setGrid(newGrid); 
-    }
-    function handleClick (row, col){ 
-      if(startingGrid[row][col] == " "){
-        const newGrid = [...grid];
-        newGrid[row][col] = currentNumber
-        setGrid(newGrid)
+    const handleCellChange = useCallback((row, col, value) => {
+      const newGrid = [...grid];
+      newGrid[row][col] = value > 0 ? value : '';
+      setGrid(newGrid);
+    }, [grid]);
+  
+    function handleClick(row, col) {
+      if (startingGrid[row][col] === " ") {
+        handleCellChange(row, col, currentNumber);
+        setSelectedCell({ row, col })
       }
-      
     }
     function checkSolution() {
         for (let row = 0; row < 9; row++) {
@@ -48,7 +40,7 @@ export default function(props){
         if (currentNumber == number){
             setCurrentNumber(0)
         } 
-
+        
         setCurrentNumber(number)
         console.log(currentNumber)
     }
@@ -66,11 +58,10 @@ export default function(props){
             {grid.map((row, rowIndex) => (
                 <div key={rowIndex}>
                     {row.map((cell, colIndex) => (
-                       <div className={style.inputContainer} 
+                       <div className={`${style.inputContainer} ${selectedCell.row === rowIndex || selectedCell.col === colIndex ? style.selected : ''}`}
                             key={`${rowIndex}-${colIndex}`}
-                            ref={(el) => inputs.current[rowIndex * 9 + colIndex] = el}
                             onClick={() => handleClick(rowIndex, colIndex)}
-                       >{cell || ' '} </div>
+                       >{cell || ''} </div>
                         
                        
                     ))}

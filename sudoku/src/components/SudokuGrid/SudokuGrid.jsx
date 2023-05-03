@@ -3,6 +3,7 @@ import { useEffect, useState, useMemo, useCallback } from "react"
 import {useDispatch, useSelector} from "react-redux";
 import style from "./sudokuGrid.module.css"
 import PlaySudoku from "../PlaySudoku/PlaySudoku";
+import { Link } from "react-router-dom"
 
 export default  function(){
 
@@ -48,6 +49,9 @@ export default  function(){
             {
                 level? <button onClick={() => setLevel(null)}>Back</button>:
                 <div> 
+                    <Link to="/howtoplay">
+                        <button>
+                        How To Play</button></Link>
                     <h1>select a level</h1>
                     <button onClick={handleLevelEasy}>Easy</button>
                     <button onClick={handleLevelMedium}>Medium</button>
@@ -57,7 +61,7 @@ export default  function(){
                 
             }
             
-            <h1>{level}</h1>
+            
             {level?
                 <PlaySudoku solved = {solvedSudoku} sudokuGrid = {sudoku} level = {level} />:
                  <h1></h1>

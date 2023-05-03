@@ -1,0 +1,40 @@
+.sudokuContainer{
+    max-width: 80%;
+}
+.input{
+    width: 3vw;
+    height: 3vw;
+    font-size: 2vw;
+    text-align: center;
+}
+.inputBlue{
+    background-color: var(--DarkBlue1);
+    color: var(--Cream1);
+    border: 1px solid var(--LightBlue1);
+}
+.selectedBlue{
+    background-color: var(--Pink1);
+    color: var(--DarkBlue1)
+}
+.fixedInput{
+  width: 3vw;
+    height: 3vw;
+    font-size: 2vw;
+    text-align: center;
+    background-color: pink;
+}
+.changingInput{
+    width: 3vw;
+    height: 3vw;
+    font-size: 2vw;
+    text-align: center;
+    background-color:yellowgreen;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.selected{
+  background-color: red;
+}
