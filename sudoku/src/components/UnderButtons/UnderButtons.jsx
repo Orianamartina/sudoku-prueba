@@ -1,3 +1,5 @@
+
+
 export default function(props){
 
 
@@ -17,9 +19,10 @@ export default function(props){
                 <button onClick={() => props.setButton(9)}>9</button>
 
             </div>
-            <button>Reset</button>
+            <button onClick={props.resetGrid}>Reset</button>
+            <button onClick={props.solveGrid}>Solve</button>
             <button onClick={props.checkSolution}>Check solution</button>
-            {props.finished? <h1>finished</h1>: <h1>not finished</h1>}
+            
 
         </div>
     )

@@ -1,0 +1,11 @@
+.inputContainer{
+    display: inline-block;
+    border: 2px solid black;
+    height: 3vw;
+    width: 3vw;
+    vertical-align: top;
+}
+.input{
+    font-size: 2vw;
+    margin: 0
+}

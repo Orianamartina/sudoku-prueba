@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react"
 import style from "../SudokuGrid/sudokuGrid.module.css"
+import SudokuCompleted from "../SudokuCompleted/SudokuCompleted";
 
 
 export default function(props){
@@ -82,31 +83,35 @@ export default function(props){
       };
   
     return (
-        //{finished?}
-        <div>
-            {grid.map((row, rowIndex) => (
-                <div key={rowIndex}>
-                    {row.map((cell, colIndex) => (
-                        <input
-                        className={style.input}
-                        key={`${rowIndex}-${colIndex}`}
-                        type="number"
-                        value={cell || ' '}
-                        onChange={(e) => handleChange(e, rowIndex, colIndex)}
-                        onKeyDown={(e) => handleKeyDown(e, rowIndex, colIndex)}
-                        ref={(el) => inputs.current[rowIndex * 9 + colIndex] = el}
-                        onInput={(event)=>event.target.value=event.target.value.slice(0,event.target.maxLength)} 
-                        maxLength="1"
-                        
-                        />
-                    ))}
-                </div>
-        ))}
-        <button onClick={resetGrid}>Reset</button>
-        <button onClick={checkSolution}>Check solution</button>
-        <button onClick={solveGrid}>Solve</button>
-        </div>
-    )
+        
+        <>
+            {finished? (<SudokuCompleted />):(
+            <div>
+              {grid.map((row, rowIndex) => (
+                
+                  <div key={rowIndex}>
+                      {row.map((cell, colIndex) => (
+                          <input
+                          className={style.input}
+                          key={`${rowIndex}-${colIndex}`}
+                          type="number"
+                          value={cell || ' '}
+                          onChange={(e) => handleChange(e, rowIndex, colIndex)}
+                          onKeyDown={(e) => handleKeyDown(e, rowIndex, colIndex)}
+                          ref={(el) => inputs.current[rowIndex * 9 + colIndex] = el}
+                          onInput={(event)=>event.target.value=event.target.value.slice(0,event.target.maxLength)} 
+                          maxLength="1"
+                          
+                          />
+                      ))}
+                  </div>
+          ))}
+            <button onClick={resetGrid}>Reset</button>
+            <button onClick={checkSolution}>Check solution</button>
+            <button onClick={solveGrid}>Solve</button>
+          </div>)}
+      </>)
+    
 
 
 
