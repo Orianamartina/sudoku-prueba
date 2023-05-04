@@ -1,40 +1,156 @@
+body{
+  font-family: var(--font);
+  font-weight: 700;
+  
+  
+}
+.bodyPink{
+  background-color: var(--LightPink3);
+ 
+}
 .sudokuContainer{
-    max-width: 80%;
+    width: fit-content;
+    margin: auto
+    
 }
 .input{
     width: 3vw;
     height: 3vw;
     font-size: 2vw;
     text-align: center;
+    font-family: var(--font);
+    font-weight: 700;
+    
 }
-.inputBlue{
-    background-color: var(--DarkBlue1);
-    color: var(--Cream1);
-    border: 1px solid var(--LightBlue1);
+.button{
+  font-size: 1.5vw;
+
 }
-.selectedBlue{
-    background-color: var(--Pink1);
-    color: var(--DarkBlue1)
+.buttonSelectTeal{
+  height: 2vw;
+  width: 2vw;
+  background-color: var(--Teal1);
 }
-.fixedInput{
-  width: 3vw;
-    height: 3vw;
-    font-size: 2vw;
-    text-align: center;
-    background-color: pink;
+.buttonSelectPink{
+  height: 2vw;
+  width: 2vw;
+  background-color: var(--PinkChicle3);
 }
-.changingInput{
-    width: 3vw;
-    height: 3vw;
-    font-size: 2vw;
-    text-align: center;
-    background-color:yellowgreen;
+.buttonSelectGreen{
+  height: 2vw;
+  width: 2vw;
+  background-color: var(--LightGreen2);
 }
+/*--Teal1: #0fa3b1;
+--LightGreen1: #d9e5d6;
+--Yellow1: #eddea4;
+--LightOrange1: #f7a072;
+--BrightOrange1: #ff9b42;*/
+
+.inputTeal{
+    background-color: var(--Teal1);
+    color: var(--LightGreen1);
+    border: 1px solid var(--LightGreen1);
+}
+.sudokuContainerTeal :nth-child(1){
+  border-top: 3px solid var(--LightGreen1);
+  
+}
+.sudokuContainerTeal :nth-child(3){
+  border-bottom: 3px solid var(--LightGreen1);
+  
+}
+.sudokuContainerTeal :nth-child(6){
+  border-bottom: 3px solid var(--LightGreen1);
+  
+}
+.sudokuContainerTeal :nth-child(9){
+  border-bottom: 3px solid var(--LightGreen1);
+  
+}
+.sudokuRowTeal :nth-child(1){
+  border-top: none;
+  border-left: 3px solid var(--LightGreen1);
+}
+.sudokuRowTeal :nth-child(3){
+  border-bottom: none;
+  border-right: 3px solid var(--LightGreen1);
+}
+.sudokuRowTeal :nth-child(6){
+  border-bottom: none;
+  border-right: 3px solid var(--LightGreen1);
+}
+.sudokuRowTeal :nth-child(9){
+  border-bottom: none;
+  border-right: 3px solid var(--LightGreen1);
+}
+.selectedTeal{
+    background-color: var(--Yellow1);
+    color: var(--Teal1)
+}
+.sudokuCointainer .fixedInputTeal{
+  color: var(--LightOrange1)
+}
+
+
+/* pink styles
+ 
+ --Fucsia3: #da2864;
+  --LightPink3: #f2a7be;
+  --PinkChicle3: #ec6091;
+  --LightBlue3: #9ae1e2;
+  --DarkBlue3: #16a5a3;
+
+*/
+
+.inputPink{
+  background-color: var(--PinkChicle3);
+  color: var(--LightPink3);
+  border: 1px solid var(--Cream3);
+}
+.sudokuContainerPink :nth-child(1){
+border-top: 3px solid var(--Cream3);
+
+}
+.sudokuContainerPink :nth-child(3){
+border-bottom: 3px solid var(--Cream3);
+
+}
+.sudokuContainerPink :nth-child(6){
+border-bottom: 3px solid var(--Cream3);
+
+}
+.sudokuContainerPink :nth-child(9){
+border-bottom: 3px solid var(--Cream3);
+
+}
+.sudokuRowPink :nth-child(1){
+border-top: none;
+border-left: 3px solid var(--Cream3);
+}
+.sudokuRowPink :nth-child(3){
+border-bottom: none;
+border-right: 3px solid var(--Cream3);
+}
+.sudokuRowPink :nth-child(6){
+border-bottom: none;
+border-right: 3px solid var(--Cream3);
+}
+.sudokuRowPink :nth-child(9){
+border-bottom: none;
+border-right: 3px solid var(--Cream3);
+}
+.selectedPink{
+  background-color: var(--LightBlue3);
+  color: var(--PinkChicle3);
+}
+.fixedInputPink{
+color: var(--Fucsia3)
+}
+
+
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}
-.selected{
-  background-color: red;
 }

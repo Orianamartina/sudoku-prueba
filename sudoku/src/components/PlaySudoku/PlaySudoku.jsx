@@ -9,7 +9,7 @@ export default function(props){
     const [solvedGrid, setSolvedGrid] = useState(props.solved)
     const [selectedCell, setSelectedCell] = useState({row: 0, col: 0})
     const [finished, setFinished] = useState()
-    const [colorState, setColorState] = useState("blue")
+    const [colorState, setColorState] = useState("teal")
     const inputs = useRef([]);
     useEffect(() => {
         
@@ -19,7 +19,11 @@ export default function(props){
     }, []);
  
 
-
+    function click(rowIndex, colIndex){
+      const inputsPerRow = 9;
+      setSelectedCell({ row: rowIndex , col: colIndex });
+      inputs.current[rowIndex  * inputsPerRow + colIndex].focus();
+    }
     function handleChange(event, row, col) {
         if (startingGrid[row][col] == " "){
           const { value } = event.target;
@@ -90,26 +94,28 @@ export default function(props){
   
     return (
         
-        <>
+        <body className= {colorState == "teal"? style.BodyTeal: colorState == "pink"? style.bodyPink: style.bodyGreen} >
             {finished? (<SudokuCompleted />):(
             <div>
-              <button onClick={() => handleColorState("pink")}>Pink</button>
-              <button onClick={() => handleColorState("blue")}>Blue</button>
-              <button onClick={() => handleColorState("green")}>Green</button>
+              <button className={`${style.button} ${style.buttonSelectPink} `} onClick={() => handleColorState("pink")}>  </button>
+              <button className={`${style.button}  ${style.buttonSelectTeal} `} onClick={() => handleColorState("teal")}></button>
+              <button className={`${style.button}  ${style.buttonSelectGreen}`} onClick={() => handleColorState("green")}></button>
+
+              <div className={`${colorState == "teal"? style.sudokuContainerTeal: colorState == "pink"? style.sudokuContainerPink: style.sudokuContainerGreen} `}>
               {grid.map((row, rowIndex) => (
                   
-                  <div key={rowIndex}>
+                  <div className={`${style.sudokuContainer} ${colorState == "teal"? style.sudokuRowTeal: colorState == "pink"? style.sudokuRowPink: style.sudokuRowGreen} `} key={rowIndex}>
                       {row.map((cell, colIndex) => (
                           <input
                           className={`
                           ${style.input} 
-                          ${colorState == "blue"? style.inputBlue: colorState == "pink"? style.inputPink: style.inputGreen} 
-                          ${selectedCell.row === rowIndex || selectedCell.col === colIndex && colorState == "blue" ? style.selectedBlue : ''}
-                          ${selectedCell.row === rowIndex || selectedCell.col === colIndex && colorState == "pink" ? style.selectedPink : ''}
-                          ${selectedCell.row === rowIndex || selectedCell.col === colIndex && colorState == "green" ? style.selectedGreen : ''}
-                          ${startingGrid[rowIndex][colIndex] ===  " "  && colorState == "blue" ? style.changingInputBlue : style.fixedInputBlue}
-                          ${startingGrid[rowIndex][colIndex] ===  " "  && colorState == "pink" ? style.changingInputPink : style.fixedInputPink}
-                          ${startingGrid[rowIndex][colIndex] ===  " "  && colorState == "blue" ? style.changingInputGreen : style.fixedInputGreen}
+                          ${colorState == "teal"? style.inputTeal: colorState == "pink"? style.inputPink: style.inputGreen} 
+                          ${(selectedCell.row === rowIndex || selectedCell.col === colIndex) && colorState == "teal" ? style.selectedTeal : ''}
+                          ${(selectedCell.row === rowIndex || selectedCell.col === colIndex) && colorState == "pink" ? style.selectedPink : ''}
+                          ${(selectedCell.row === rowIndex || selectedCell.col === colIndex) && colorState == "green" ? style.selectedGreen : ''}
+                          ${startingGrid[rowIndex][colIndex] ==  " "  && colorState == "teal" ? style.inputTeal : style.fixedInputTeal}
+                          ${startingGrid[rowIndex][colIndex] ==  " "  && colorState == "pink" ? style.inputPink : style.fixedInputPink}
+                          ${startingGrid[rowIndex][colIndex] ==  " "  && colorState == "blue" ? style.inputGreen : style.fixedInputGreen}
                           ` }
                         
                 
@@ -121,17 +127,19 @@ export default function(props){
                           onKeyDown={(e) => handleKeyDown(e, rowIndex, colIndex)}
                           ref={(el) => inputs.current[rowIndex * 9 + colIndex] = el}
                           onInput={(event)=>event.target.value=event.target.value.slice(0,event.target.maxLength)} 
+                          onClick={()=> click(rowIndex, colIndex)}
                           maxLength="1"
                           
                           />
                       ))}
                   </div>
           ))}
-            <button onClick={resetGrid}>Reset</button>
-            <button onClick={checkSolution}>Check solution</button>
-            <button onClick={solveGrid}>Solve</button>
+          </div>
+            <button className={`${style.button} ${colorState == "teal"? style.buttonTeal: colorState == "pink"? style.buttonPink: style.buttonGreen} `} onClick={resetGrid}>Reset</button>
+            <button className={`${style.button} ${colorState == "teal"? style.buttonTeal: colorState == "pink"? style.buttonPink: style.buttonGreen} `} onClick={checkSolution}>Check solution</button>
+            <button className={`${style.button} ${colorState == "teal"? style.buttonTeal: colorState == "pink"? style.buttonPink: style.buttonGreen} `} onClick={solveGrid}>Solve</button>
           </div>)}
-      </>)
+      </body>)
     
 
 

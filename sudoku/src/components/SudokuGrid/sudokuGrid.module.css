@@ -2,12 +2,12 @@
 
 :root{
   /*blueandpink*/
-  --LightBlue1: #aee4ff;
-  --Lavender1: #6a9cfd;
-  --Pink1: #ffb8d0;
-  --Cream1: #fee5e1;
-  --DarkBlue1: #033495;
-
+  --Teal1: #2aa3ae;
+  --DarkTeal1:#13464b;
+  --LightGreen1: #d9e5d6;
+  --Yellow1: #ede2b5;
+  --LightOrange1: #ff7d38;
+  --BrightOrange1: #ff9b42;
   /*greens*/
   --DarkGreen2: #2b463c;
   --NotSoDarkGreen2: #688f4e;
@@ -15,16 +15,24 @@
   --White2: #f4f1e9;
 
   /*pinks*/
-  --Lila3: #c2c3f3;
-  --LightMagenta3: #c9b8da;
-  --Pink3: #edc4d6;
-  --Cream3: #ffeae5;
+  --Fucsia3: #9d234c;
+  --LightPink3: #f1d6de;
+  --PinkChicle3: #ec6091;
+  --LightBlue3: #9ae1e2;
+  --DarkBlue3: #16a5a3;
+  --Cream3: #fedcbe;
+
+
+  --font: 'Open Sans', sans-serif;
+
 }
 
 
 .sudokuContainer{
     max-width: 100%;
+    
 }
+
 
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
