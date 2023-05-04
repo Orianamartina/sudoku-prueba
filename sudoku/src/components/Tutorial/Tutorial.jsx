@@ -1,4 +1,4 @@
-import { useState } from "react"
+import style from "./tutorial.module.css"
 import { Link } from "react-router-dom"
 
 export default function(){
@@ -7,13 +7,13 @@ export default function(){
 
     return(
         <div>
-            <Link to="/play">
+            <Link to="/">
 
-                <button>Back</button>
+                <button className={style.button}>Back</button>
             </Link>
             
-            <h1>How to play:</h1>
-            <p>
+            <h1 className={style.title}>How to play:</h1>
+            <p className={style.paragraph}>
 
                     Sudoku is a number-based logic puzzle that consists of a 9x9 grid, which is further divided into nine 3x3 sub-grids. The objective is to fill each row, column, and sub-grid with the numbers 1-9 without repeating any numbers in the same row, column, or sub-grid.
 

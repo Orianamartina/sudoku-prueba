@@ -10,8 +10,8 @@ function App() {
     <div className="App">
         
           <Routes>
-            <Route exact path = "/" element= {<Landing/>}/>
-            <Route exact path = "/play" element = {<SudokuScreen />} />
+            <Route exact path = "/" element={<SudokuScreen />}/>
+  
             <Route exact path ="/howtoplay" element={<Tutorial/>} />
           </Routes>
        
