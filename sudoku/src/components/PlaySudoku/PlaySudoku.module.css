@@ -95,7 +95,6 @@ border-right: 0.3vw solid var(--LightColor);
 }
 .selected{
   
-  color: var(--BrightColor);
  
   filter: brightness(115%);
   border: 1px solid var(--LightColor);

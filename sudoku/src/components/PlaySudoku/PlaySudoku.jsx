@@ -92,46 +92,47 @@ export default function(props){
    
     return (
         
-        <body >
-            {finished? (<SudokuCompleted />):(
-            <div>
-              
+      <body >
+          {finished? (<SudokuCompleted />):(
+          <div>
+            
 
-              <div className={`${style.sudokuContainer} `}>
-              {grid.map((row, rowIndex) => (
-                  
-                  <div className={` ${style.sudokuRow} `} key={rowIndex}>
-                      {row.map((cell, colIndex) => (
-                          <input
-                          className={`
+            <div className={`${style.sudokuContainer} `}>
+            {grid.map((row, rowIndex) => (
+                
+                <div className={` ${style.sudokuRow} `} key={rowIndex}>
+                    {row.map((cell, colIndex) => (
+                        <input
+                        className={`
 
-                          ${style.input} 
-  
-                          ${(selectedCell.row === rowIndex || selectedCell.col === colIndex)? style.selected: " " }
-                          ${startingGrid[rowIndex][colIndex] ==  " "   ? style.input : style.fixedInput}
-                          ${selectedCell.row === rowIndex && selectedCell.col === colIndex ? style.selectedCurrent: " "}
+                        ${style.input} 
 
-                          ` }
-                          key={`${rowIndex}-${colIndex}`}
-                          type="number"
-                          value={cell || ' '}
-                          onChange={(e) => handleChange(e, rowIndex, colIndex)}
-                          onKeyDown={(e) => handleKeyDown(e, rowIndex, colIndex)}
-                          ref={(el) => inputs.current[rowIndex * 9 + colIndex] = el}
-                          onInput={(event)=>event.target.value=event.target.value.slice(0,event.target.maxLength)} 
-                          onClick={()=> click(rowIndex, colIndex)}
-                          maxLength="1"
-                          
-                          />
-                      ))}
-                  </div>
-          ))}
-          </div>
-            <button className={style.button} onClick={resetGrid}>Reset</button>
-            <button className={style.button} onClick={checkSolution}>Check solution</button>
-            <button className={style.button} onClick={solveGrid}>Solve</button>
-          </div>)}
-      </body>)
+                        ${(selectedCell.row === rowIndex || selectedCell.col === colIndex)? style.selected: " " }
+                        ${startingGrid[rowIndex][colIndex] ==  " "   ? style.input : style.fixedInput}
+                        ${selectedCell.row === rowIndex && selectedCell.col === colIndex ? style.selectedCurrent: " "}
+
+                        ` }
+                        key={`${rowIndex}-${colIndex}`}
+                        type="number"
+                        value={cell || ' '}
+                        onChange={(e) => handleChange(e, rowIndex, colIndex)}
+                        onKeyDown={(e) => handleKeyDown(e, rowIndex, colIndex)}
+                        ref={(el) => inputs.current[rowIndex * 9 + colIndex] = el}
+                        onInput={(event)=>event.target.value=event.target.value.slice(0,event.target.maxLength)} 
+                        onClick={()=> click(rowIndex, colIndex)}
+                        maxLength="1"
+                        
+                        />
+                    ))}
+                </div>
+        ))}
+        </div>
+          <button className={style.button} onClick={resetGrid}>Reset</button>
+          <button className={style.button} onClick={checkSolution}>Check solution</button>
+          <button className={style.button} onClick={solveGrid}>Solve</button>
+          
+        </div>)}
+    </body>)
  
 
 

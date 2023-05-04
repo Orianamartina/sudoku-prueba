@@ -69,6 +69,7 @@ export default  function(){
     
     return (
         <div className={style.sudokuContainer}>
+            <h1 className={style.title}>SUDOKU</h1>
             <button className={ style.buttonSelectPink} onClick={() => handleColorStatePink()}>  </button>
              <button className={ style.buttonSelectTeal} onClick={() => handleColorStateBlue()}></button>
              <button className={ style.buttonSelectGreen} onClick={() => handleColorStateGreen()}></button>
@@ -77,13 +78,16 @@ export default  function(){
                 level? <button onClick={() => setLevel(null)} className={style.button}>Back</button>:
                 <div> 
                     <Link to="/howtoplay">
-                        <button>
+                        <button className={style.howToButton}>
                         How To Play</button></Link>
-                    <h1>select a level</h1>
-                    <button onClick={handleLevelEasy}>Easy</button>
-                    <button onClick={handleLevelMedium}>Medium</button>
-                    <button onClick={handleLevelHard}>Hard</button>
-                    <button onClick={handleLevelExpert}>Expert</button>
+                    <h1 className={style.smallTitle}>select a level</h1>
+                    <div className={style.buttonContainer}>
+                         <button className={style.levelButton} onClick={handleLevelEasy}>Easy</button>
+                        <button className={style.levelButton} onClick={handleLevelMedium}>Medium</button>
+                        <button className={style.levelButton} onClick={handleLevelHard}>Hard</button>
+                        <button className={style.levelButton} onClick={handleLevelExpert}>Expert</button>
+                    </div>
+                   
                 </div>
                 
             }
