@@ -1,28 +1,30 @@
-body{
-  font-family: var(--font);
-  font-weight: 700;
-  
-  
-}
 
 
 .sudokuContainer{
+    display: block;
     width: fit-content;
     margin: auto;
     border-radius: 5px;
     box-shadow: 3px 3px ;
     margin-bottom: 2%;
+   
     
     
 }
 .input{
-    width: 3vw;
-    height: 3vw;
-    font-size: 2vw;
+    display: inline-block;
+    width: 6vw;
+    height: 6vw;
+    font-size: 5vw;
     text-align: center;
     font-family: var(--font);
     font-weight: 700;
-    
+     vertical-align: top;
+
+}
+.sudokuRow{
+    height: 6vw;
+    width: fit-content;
 }
 .button{
   font-size: 1.2vw;
@@ -50,36 +52,36 @@ textarea:focus, input:focus{
 
 
 .sudokuContainer :nth-child(1){
-border-top: 0.3vw solid var(--LightColor);
+border-top: 1.3vw solid var(--LightColor);
 
 }
 .sudokuContainer :nth-child(3){
-border-bottom: 0.3vw solid var(--LightColor);
+border-bottom: 1.3vw solid var(--LightColor);
 
 }
 .sudokuContainer :nth-child(6){
-border-bottom: 0.3vw solid var(--LightColor);
+border-bottom: 1.3vw solid var(--LightColor);
 
 }
 .sudokuContainer :nth-child(9){
-border-bottom: 0.3vw solid var(--LightColor);
+border-bottom: 1.3vw solid var(--LightColor);
 
 }
 .sudokuRow :nth-child(1){
 border-top: none;
-border-left: 0.3vw solid var(--LightColor);
+border-left: 1.3vw solid var(--LightColor);
 }
 .sudokuRow :nth-child(3){
 border-bottom: none;
-border-right: 0.3vw solid var(--LightColor);
+border-right: 1.3vw solid var(--LightColor);
 }
 .sudokuRow :nth-child(6){
 border-bottom: none;
-border-right: 0.3vw solid var(--LightColor);
+border-right: 1.3vw solid var(--LightColor);
 }
 .sudokuRow :nth-child(9){
 border-bottom: none;
-border-right: 0.3vw solid var(--LightColor);
+border-right: 1.3vw solid var(--LightColor);
 }
 
 .selectedCurrent{
@@ -103,8 +105,6 @@ border-right: 0.3vw solid var(--LightColor);
 .fixedInput{
 color: var(--Darkest)
 }
-
-
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;

@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react"
-import style from "./sudokuGrid.module.css"
+import style from "./playSudokuCell.module.css"
 import UnderButtons from "../UnderButtons/UnderButtons";
 import SudokuCompleted from "../SudokuCompleted/SudokuCompleted";
 
@@ -54,20 +54,30 @@ export default function(props){
         <div>
           {finished? <SudokuCompleted/>:(
           <>
+          <div className={style.sudokuContainer}>
             
             {grid.map((row, rowIndex) => (
-                <div key={rowIndex}>
+                <div className= {style.sudokuRow} key={rowIndex}>
                     {row.map((cell, colIndex) => (
-                       <div className={`${style.inputContainer} ${selectedCell.row === rowIndex || selectedCell.col === colIndex ? style.selected : ''}`}
-                            key={`${rowIndex}-${colIndex}`}
-                            onClick={() => handleClick(rowIndex, colIndex)}
-                       >{cell || ''} </div>
+                       <div className={`
+
+                          ${style.input} 
+
+                          ${(selectedCell.row === rowIndex || selectedCell.col === colIndex)? style.selected: " " }
+                          ${startingGrid[rowIndex][colIndex] ==  " "   ? style.input : style.fixedInput}
+                          ${selectedCell.row === rowIndex && selectedCell.col === colIndex ? style.selectedCurrent: " "}
+
+                          ` }
+                              key={`${rowIndex}-${colIndex}`}
+                              onClick={() => handleClick(rowIndex, colIndex)}
+                        >{cell || ' '} 
+                       </div>
                         
                        
                     ))}
                 </div>
             ))}
-
+          </div> 
           
             <UnderButtons 
               resetGrid = {resetGrid} 
@@ -76,8 +86,10 @@ export default function(props){
               finished = {finished} 
               setButton = {setButton}
             />
-          </> )}
-        </div>
+         
+          
+        </>)}
+      </div>
     )
 
 

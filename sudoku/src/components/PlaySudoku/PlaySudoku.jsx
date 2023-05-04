@@ -10,7 +10,6 @@ export default function(props){
     const [selectedCell, setSelectedCell] = useState({row: 0, col: 0})
     const [finished, setFinished] = useState()
     //const [colorState, setColorState] = useState("teal")
-    var colorState = props.colorState
     const inputs = useRef([]);
     useEffect(() => {
         
@@ -97,10 +96,10 @@ export default function(props){
           <div>
             
 
-            <div className={`${style.sudokuContainer} `}>
+            <div className={style.sudokuContainer} >
             {grid.map((row, rowIndex) => (
                 
-                <div className={` ${style.sudokuRow} `} key={rowIndex}>
+                <div className= {style.sudokuRow} key={rowIndex}>
                     {row.map((cell, colIndex) => (
                         <input
                         className={`
