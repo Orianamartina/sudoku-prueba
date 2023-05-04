@@ -69,7 +69,7 @@ export default  function(){
     
     return (
         <div className={style.sudokuContainer}>
-            <h1 className={style.title}>SUDOKU</h1>
+            {level? " " :<h1 className={style.title}>SUDOKU</h1>}
             <button className={ style.buttonSelectPink} onClick={() => handleColorStatePink()}>  </button>
              <button className={ style.buttonSelectTeal} onClick={() => handleColorStateBlue()}></button>
              <button className={ style.buttonSelectGreen} onClick={() => handleColorStateGreen()}></button>
