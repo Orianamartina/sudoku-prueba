@@ -2,27 +2,42 @@
 
 :root{
   /*blueandpink*/
-  --Teal1: #2aa3ae;
-  --DarkTeal1:#13464b;
+  --Teal1: #919296;
+  --DarkTeal1:#161a2a;
   --LightGreen1: #d9e5d6;
   --Yellow1: #ede2b5;
   --LightOrange1: #ff7d38;
   --BrightOrange1: #ff9b42;
   /*greens*/
-  --DarkGreen2: #2b463c;
+  --DarkGreen2: #1d2d27;
+  --MediumGreen: #4a6934;
   --NotSoDarkGreen2: #688f4e;
+  --NotSoDarkGreen3: #84d350;
   --LightGreen2: #b1d182;
   --White2: #f4f1e9;
-
+ 
   /*pinks*/
-  --Fucsia3: #9d234c;
-  --LightPink3: #f1d6de;
-  --PinkChicle3: #ec6091;
-  --LightBlue3: #9ae1e2;
-  --DarkBlue3: #16a5a3;
-  --Cream3: #fedcbe;
+  --Darkest: #3f2d51; /* darkest*/
+  --LightColor: #fedcbe; /* cream*/
+  --BrightColorLighter: #deacaa; /* lightpink*/
+  --BrightColor: #cb7d99; /* pinkchicle*/
+  --SemiLightColor:#dbbfbb;  /* graypink*/
+  --DarkBrightColor: #a34c6b; /* darkpink*/
+
+  --backgroundInputGreen: url("../../Img/973c61e2d535c4c153c8ce07ea7ca314.jpg");
+  --backgroundInputPink: url("../../Img/f0bce0131c99e082d9325d417553d1cc.jpg");
+  --backgroundInputBlue: url("../../Img/ef5933e794f72131abb0ac8fcdf885a7.jpg");
+
+  --bodyBackgroundPink: url("../../Img/1247b0a8ad8d062988ad75a358b0a900.jpg");
+  --bodyBackgroundBlue: url("../../Img/4ca58378d722ad04af75184d4fa40bb2.jpg") ;
+  --bodyBackgroundGreen: url("../../Img/9a26d85b53aab35d5379cc5b4e95216e.jpg");
+
+  --bodyBackground: url("../../Img/1247b0a8ad8d062988ad75a358b0a900.jpg");
 
 
+  --backgroundInput: url("../../Img/f0bce0131c99e082d9325d417553d1cc.jpg");
+  --backgroundSelected: url("../../Img/81969ae6d67045710dfdb1e7ec6024d4.jpg");
+  --buttonBackground: var(--backgroundInput);
   --font: 'Open Sans', sans-serif;
 
 }
@@ -32,7 +47,56 @@
     max-width: 100%;
     
 }
+body{
+  background-image: var(--bodyBackground)
+}
+.button{ 
+  margin-right: auto;
+  margin-left: auto;
+  display: display; 
+  font-size: 1vw;
+  cursor: pointer;
+  background-color: var(--LightColor) ;
+  padding: 1vw;
+  font-family: var(--font);
+  border-radius: 5px;
+  color: var(--Darkest);
+  border: 0.2vw solid var(--Darkest);
+  box-shadow: 1px 1px;
+  background-image: var(--buttonBackground);
+  height: 2.5vw;
+ 
+  
+}
 
+
+.buttonSelectTeal{
+  margin: 2%;
+  height: 2.5vw;
+  width: 2.5vw;
+  background-image: var(--backgroundInputBlue);
+  cursor: pointer;
+  border: 3px solid var(--Darkest);
+  border-radius: 5px;
+}
+.buttonSelectPink{
+  height: 2.5vw;
+  width: 2.5vw;
+  background-image: var(--backgroundInputPink);
+  cursor: pointer;
+  border: 3px solid var(--Darkest);
+  border-radius: 5px;
+
+}
+.buttonSelectGreen{
+  height: 2.5vw;
+  width: 2.5vw;
+  background-image: var(--backgroundInputGreen);
+  cursor: pointer;
+  border: 3px solid var(--Darkest);
+  border-radius: 5px;
+ 
+}
 
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
