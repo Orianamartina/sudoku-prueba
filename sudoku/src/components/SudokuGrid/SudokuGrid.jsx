@@ -8,19 +8,12 @@ import { Link } from "react-router-dom"
 
 export default  function(){
     const root = document.documentElement.style;
-    //const [sudoku, setSudoku] = useState()
     const random = []
     const dispatch = useDispatch()
     const sudoku = useSelector((state) => state.sudokuGrid)
     const solvedSudoku = useSelector((state) => state.solvedSudokuGrid)
-    const [colorState, setColorState] = useState("pink")
+
     
-    
-   
-    //console.log(sudoku)
-    useEffect(() => {
-        
-    },[])
     
     const [level, setLevel] = useState(null)
     const [flag, setFlag] = useState(null)
@@ -45,9 +38,7 @@ export default  function(){
         setLevel("expert")
         setFlag(4)
     }
-    const  handleColorState = (color) => {
-        setColorState(color)
-    }
+    
     const  handleColorStateGreen = () => {
         root.setProperty('--Darkest', '#1d2d27');
         root.setProperty('--LightColor', '#f4f1e9');
@@ -99,7 +90,7 @@ export default  function(){
             
             
             {level?
-                <PlaySudoku solved = {solvedSudoku} sudokuGrid = {sudoku} level = {level} colorState = {colorState}/>:
+                <PlaySudoku solved = {solvedSudoku} sudokuGrid = {sudoku} level = {level} />:
                  <h1></h1>
             }
             

@@ -53,21 +53,31 @@ body{
 .button{ 
   margin-right: auto;
   margin-left: auto;
-  display: display; 
+  margin-bottom: 2%;
+  display: block; 
   font-size: 1vw;
   cursor: pointer;
   background-color: var(--LightColor) ;
-  padding: 1vw;
+  padding: 0.5vw;
   font-family: var(--font);
   border-radius: 5px;
   color: var(--Darkest);
-  border: 0.2vw solid var(--Darkest);
+  border: none;
   box-shadow: 1px 1px;
   background-image: var(--buttonBackground);
-  height: 2.5vw;
+  transition: 0.5s;
+  color: var(--Darkest);
+  
  
   
 }
+.button:hover {
+  box-shadow: 0.3vw 0.5vw var(--Darkest) ;
+  filter:brightness(110%)
+}
+
+
+
 
 
 .buttonSelectTeal{
@@ -76,28 +86,47 @@ body{
   width: 2.5vw;
   background-image: var(--backgroundInputBlue);
   cursor: pointer;
-  border: 3px solid var(--Darkest);
+  border: none;
+  box-shadow: 1px 1px;
   border-radius: 5px;
+  transition: 0.5s;
 }
+.buttonSelectTeal:hover {
+  box-shadow: 0.3vw 0.5vw var(--Darkest) ;
+  filter:brightness(110%)
+}
+
 .buttonSelectPink{
   height: 2.5vw;
   width: 2.5vw;
   background-image: var(--backgroundInputPink);
   cursor: pointer;
-  border: 3px solid var(--Darkest);
+  border: none;
+  box-shadow: 1px 1px;
   border-radius: 5px;
+  transition: 0.5s;
 
+}
+.buttonSelectPink:hover {
+  box-shadow: 0.3vw 0.5vw var(--Darkest);
+  filter:brightness(110%)
 }
 .buttonSelectGreen{
   height: 2.5vw;
   width: 2.5vw;
   background-image: var(--backgroundInputGreen);
   cursor: pointer;
-  border: 3px solid var(--Darkest);
+  border: none;
+  box-shadow: 1px 1px;
   border-radius: 5px;
+  transition: 0.5s;
  
 }
 
+.buttonSelectGreen:hover{
+  box-shadow: 0.3vw 0.5vw var(--Darkest);
+  filter:brightness(110%)
+}
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
