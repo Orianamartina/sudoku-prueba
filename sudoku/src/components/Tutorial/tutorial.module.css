@@ -23,3 +23,32 @@ filter:brightness(110%)
     font-size: 1.3vw;
   color: var(--Darkest);
 }
+
+@media (max-width: 700px){
+  .button{
+    width: 30%;
+    font-size: 5vw;
+  }
+  .paragraph{
+    font-size: 3vw;
+    margin: 15%;
+    margin-top: 8%;
+  }
+  .title{
+    font-size: 5vw;
+    margin-top: 5%;
+ 
+}
+}
+
+@media (max-width: 1000px){
+  .button{
+    width: 20%;
+    font-size: 4vw;
+  }
+  .paragraph{
+    font-size: 3vw;
+    margin: 15%;
+    margin-top: 8%;
+  }
+}

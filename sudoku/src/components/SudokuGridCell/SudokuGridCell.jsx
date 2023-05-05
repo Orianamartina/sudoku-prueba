@@ -85,7 +85,7 @@ export default  function(){
                 <Link to="/howtoplay">
                 <button className={style.howToButton}>
                 How To Play</button></Link>
-                 <h1 className={style.smallTitle}>select a level</h1>
+                 <h1 className={style.smallTitle}>Select a level:</h1>
                 <div className={style.buttonContainer}>
                     <button className={style.levelButton} onClick={handleLevelEasy}>Easy</button>
                     <button className={style.levelButton} onClick={handleLevelMedium}>Medium</button>
