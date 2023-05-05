@@ -1,7 +1,7 @@
 import {getSudokuEasy, getSudokuHard, getSudokuMedium, getSudokuExpert} from  "../../redux/actions";
 import { useEffect, useState, useMemo, useCallback } from "react"
 import {useDispatch, useSelector} from "react-redux";
-import style from "./sudokuGrid.module.css"
+import style from "./sudokuGridCell.module.css"
 import PlaySudokuCell from "../PlaySudokuCell/PlaySudokuCell";
 import { Link } from "react-router-dom";
 

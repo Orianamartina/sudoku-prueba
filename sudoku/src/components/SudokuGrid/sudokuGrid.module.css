@@ -60,6 +60,7 @@ body{
   color: var(--Darkest);
   transition: 0.5s;
   border: none;
+  cursor: pointer;
 }
 .howToButton:hover {
   box-shadow: 0.3vw 0.5vw var(--Darkest) ;
@@ -92,6 +93,7 @@ body{
   color: var(--Darkest);
   transition: 0.5s;
   border: none;
+  cursor: pointer;
 }
 .levelButton:hover {
   box-shadow: 0.3vw 0.5vw var(--Darkest) ;
