@@ -6,14 +6,14 @@ import SudokuCompleted from "../SudokuCompleted/SudokuCompleted";
 export default function(props){
     const [startingGrid, setStartingGrid] = useState(JSON.parse(JSON.stringify(props.sudokuGrid)));
     const [grid, setGrid] = useState(props.sudokuGrid)
-    const [solvedGrid, setSolvedGrid] = useState(props.solved)
+    const [solvedGrid, setSolvedGrid] = useState(JSON.parse(JSON.stringify(props.solved)))
     const [selectedCell, setSelectedCell] = useState({row: null, col:null})
     const [finished, setFinished] = useState()
     const [currentNumber, setCurrentNumber] = useState(0)
    
     const handleCellChange = useCallback((row, col, value) => {
-      const newGrid = [...grid];
-      newGrid[row][col] = value > 0 ? value : '';
+      const newGrid = JSON.parse(JSON.stringify(grid));
+      newGrid[row][col] = value > 0 ? value : ' ';
       setGrid(newGrid);
     }, [grid]);
   
@@ -37,7 +37,7 @@ export default function(props){
     }
     
     const setButton = (number) => {
-        if (currentNumber == number){
+        if (number === currentNumber){
             setCurrentNumber(0)
         } 
         

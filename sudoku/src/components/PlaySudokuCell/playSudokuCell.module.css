@@ -14,9 +14,9 @@
 }
 .input{
     display: inline-block;
-    width: 7vw;
-    height: 7vw;
-    font-size: 4vw;
+    width: 8vw;
+    height: 8vw;
+    font-size: 5vw;
     text-align: center;
     font-family: var(--font);
     font-weight: 700;
@@ -24,7 +24,7 @@
 
 }
 .sudokuRow{
-    height: 7vw;
+    height: 8vw;
     width: fit-content;
 }
 .button{
@@ -100,12 +100,16 @@ border-right: 1vw solid var(--LightColor);
   
  
   filter: brightness(115%);
-  border: 1px solid var(--LightColor);
+  
 }
 
 .fixedInput{
 color: var(--Darkest)
 }
+
+
+
+
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;

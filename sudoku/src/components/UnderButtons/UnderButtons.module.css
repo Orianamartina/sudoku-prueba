@@ -1,0 +1,38 @@
+.buttons{
+    color: var(--Darkest);
+    border: none;
+    box-shadow: 1px 1px;
+    background-image: var(--buttonBackground);
+    border-radius: 5px;
+    font-family: var(--font);
+    cursor: pointer;
+    font-size: 4vw;
+    margin: 2%;
+    margin-top: 4%;
+}
+.buttons:hover{
+    box-shadow: 0.3vw 0.5vw var(--Darkest) ;
+    filter:brightness(110%)
+}
+.buttonsNumber{
+    color: var(--Darkest);
+    border: none;
+    box-shadow: 1px 1px;
+    background-image: var(--buttonBackground);
+    border-radius: 5px;
+    font-family: var(--font);
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 4vw;
+    margin: 2%;
+    margin-top: 4%;
+    width: 6vw;
+
+}
+.buttonsNumber:hover{
+    box-shadow: 0.3vw 0.5vw var(--Darkest) ;
+  filter:brightness(110%)
+}
+.buttonsContainer{
+    margin-bottom: 7%;
+}
