@@ -4,7 +4,7 @@ import SudokuCompleted from "../SudokuCompleted/SudokuCompleted";
 
 
 export default function(props){
-    const [startingGrid, setStartingGrid] = useState(JSON.parse(JSON.stringify(props.sudokuGrid)));
+    const [startingGrid, setStartingGrid] = useState(props.sudokuGrid);
     const [grid, setGrid] = useState(props.sudokuGrid)
     const [solvedGrid, setSolvedGrid] = useState(props.solved)
     const [selectedCell, setSelectedCell] = useState({row: 0, col: 0})
